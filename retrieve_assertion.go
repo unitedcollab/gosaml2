@@ -85,6 +85,10 @@ func (sp *SAMLServiceProvider) RetrieveAssertionInfo(encodedResponse string) (*A
 
 	//Get the actual assertion attributes
 	attributeStatement := assertion.AttributeStatement
+
+	fmt.Println("ATTRIBUTE STATEMENT: ", attributeStatement)
+	fmt.Println("ALLOW MISSING ATTRIBUTES: ", sp.AllowMissingAttributes)
+	
 	if attributeStatement == nil && !sp.AllowMissingAttributes {
 		return nil, ErrMissingElement{Tag: AttributeStatementTag}
 	}
